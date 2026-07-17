@@ -1,0 +1,81 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+const { title, description, icon = 'star' } = Astro.props;
+
+// SVG icons map
+const icons: Record<string, string> = {
+  code: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+  design: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
+  rocket: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>`,
+  star: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+};
+
+const iconContent = icons[icon] ?? icon;
+const isEmoji = !icons[icon];
+---
+
+<div class="card">
+  {isEmoji ? (
+    <div class="card-icon emoji">{iconContent}</div>
+  ) : (
+    <div class="card-icon" set:html={iconContent} />
+  )}
+  <h3 class="card-title">{title}</h3>
+  <p class="card-description">{description}</p>
+</div>
+
+<style>
+  .card {
+    position: relative;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 0.75rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary);
+  }
+
+  .card-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+  }
+
+  .card-icon.emoji {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .card-description {
+    color: var(--color-text-dim);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+</style>

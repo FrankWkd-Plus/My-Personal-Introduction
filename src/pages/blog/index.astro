@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const allBlogPosts = await getCollection('blog');
+const sortedPosts = allBlogPosts.sort((a, b) =>
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog - Darkness"
+  description="Articles about web development, Three.js, and dark design"
+>
+  <Navigation />
+
+  <main class="blog-page">
+    <div class="container">
+      <header class="blog-header">
+        <h1 class="page-title">Blog</h1>
+        <p class="page-subtitle">
+          Exploring the depths of web development, animations, and dark design
+        </p>
+      </header>
+
+      <div class="blog-grid">
+        {sortedPosts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            slug={post.id}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-page {
+    min-height: 100vh;
+    padding: calc(var(--nav-height) + 2rem) 2rem 5rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .blog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-page {
+      padding-top: calc(var(--nav-height) + 1rem);
+    }
+
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

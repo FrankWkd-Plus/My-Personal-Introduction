@@ -1,0 +1,113 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import ThreeBackground from '../components/ThreeBackground.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const base = import.meta.env.BASE_URL;
+const {
+  title = 'Darkness - Dark Theme',
+  description = 'An intense motion-filled dark theme Astro site'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Google Fonts: Space Grotesk + DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="cursor-follower"></div>
+    <ThreeBackground />
+    <div id="page-content">
+      <slot />
+    </div>
+
+    <style>
+      #page-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Custom cursor */
+      .cursor-follower {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--color-accent-purple);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: all 0.1s ease;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+      }
+
+      .cursor-follower::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4px;
+        height: 4px;
+        background: var(--color-accent-pink);
+        border-radius: 50%;
+      }
+    </style>
+
+    <script>
+      // Custom cursor: mousemove は1度だけ登録
+      if (!(window as any).__cursorFollowerInitialized) {
+        (window as any).__cursorFollowerInitialized = true;
+        document.addEventListener('mousemove', (e) => {
+          const cursor = document.querySelector('.cursor-follower') as HTMLElement | null;
+          if (!cursor) return;
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+      }
+
+      // ホバー拡大はページ遷移後にも再バインドする必要がある
+      const bindInteractiveHover = () => {
+        const cursor = document.querySelector('.cursor-follower') as HTMLElement | null;
+        if (!cursor) return;
+        const interactiveElements = document.querySelectorAll('a, button');
+        interactiveElements.forEach((el) => {
+          if ((el as any).__cursorHoverBound) return;
+          (el as any).__cursorHoverBound = true;
+          el.addEventListener('mouseenter', () => {
+            cursor.style.width = '40px';
+            cursor.style.height = '40px';
+            cursor.style.backgroundColor = 'rgba(168, 85, 247, 0.2)';
+          });
+          el.addEventListener('mouseleave', () => {
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
+            cursor.style.backgroundColor = 'transparent';
+          });
+        });
+      };
+
+      bindInteractiveHover();
+      if (!(window as any).__cursorHoverListenerRegistered) {
+        (window as any).__cursorHoverListenerRegistered = true;
+        document.addEventListener('astro:page-load', bindInteractiveHover);
+      }
+    </script>
+  </body>
+</html>

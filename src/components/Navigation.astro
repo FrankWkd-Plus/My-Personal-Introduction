@@ -1,0 +1,234 @@
+---
+// Navigation component - Floating navbar with SVG icons
+const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+// BASE_URLを除いたパスで比較
+const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
+---
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href={base} class="logo">DARKNESS</a>
+
+    <div class="nav-links">
+      <a href={base} class:list={['nav-link', { active: relativePath === '/' }]}>
+        Home
+      </a>
+      <a href={`${base}blog/`} class:list={['nav-link', { active: relativePath.startsWith('/blog') }]}>
+        Blog
+      </a>
+      <a href={`${base}projects/`} class:list={['nav-link', { active: relativePath.startsWith('/projects') }]}>
+        Projects
+      </a>
+      <a href={`${base}about/`} class:list={['nav-link', { active: relativePath.startsWith('/about') }]}>
+        About
+      </a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn" aria-label="Toggle menu" id="mobile-menu-btn">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-content">
+    <a href={base} class:list={['mobile-nav-link', { active: relativePath === '/' }]}>Home</a>
+    <a href={`${base}blog/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/blog') }]}>Blog</a>
+    <a href={`${base}projects/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/projects') }]}>Projects</a>
+    <a href={`${base}about/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/about') }]}>About</a>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    padding: 1rem 1.5rem;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    animation: slideDown 0.5s ease-out;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    transition: color 0.2s ease;
+  }
+
+  .logo:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: var(--color-text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .mobile-menu-btn .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.98);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2rem;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: var(--color-primary);
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      top: 0.75rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      padding: 0.875rem 1rem;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+
+      // Close menu when clicking a link
+      const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+  });
+</script>

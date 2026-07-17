@@ -1,0 +1,211 @@
+---
+// Skills/Tech Stack section
+---
+
+<section class="skills">
+  <div class="container">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-subtitle">Tools and technologies I work with</p>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="category-header">
+          <div class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3 class="category-title">Frontend</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-tag">Astro</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Three.js</span>
+          <span class="skill-tag">CSS Animations</span>
+          <span class="skill-tag">WebGL</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="category-header">
+          <div class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <h3 class="category-title">Design & Animation</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-tag">Motion Design</span>
+          <span class="skill-tag">3D Graphics</span>
+          <span class="skill-tag">UI/UX</span>
+          <span class="skill-tag">Dark Themes</span>
+          <span class="skill-tag">Particle Systems</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="category-header">
+          <div class="category-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+          </div>
+          <h3 class="category-title">Tools & Workflow</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">npm/pnpm</span>
+          <span class="skill-tag">Vite</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Chrome DevTools</span>
+        </div>
+      </div>
+
+      <div class="skill-category learning-category">
+        <div class="category-header">
+          <div class="category-icon learning">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <h3 class="category-title">Currently Learning</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-tag learning">GLSL Shaders</span>
+          <span class="skill-tag learning">WebGPU</span>
+          <span class="skill-tag learning">React Three Fiber</span>
+          <span class="skill-tag learning">Blender</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills {
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-dim);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .skill-category:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
+  }
+
+  .learning-category:hover {
+    border-color: var(--color-accent-purple);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .category-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .category-icon.learning {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--color-accent-purple);
+  }
+
+  .category-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    padding: 0.375rem 0.75rem;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    transition: all 0.2s ease;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .skill-tag.learning {
+    background: rgba(139, 92, 246, 0.08);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .skill-tag.learning:hover {
+    border-color: var(--color-accent-purple);
+    color: var(--color-accent-purple);
+  }
+
+  @media (max-width: 768px) {
+    .skills {
+      padding: 4rem 1.5rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

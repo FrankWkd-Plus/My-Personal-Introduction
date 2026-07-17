@@ -1,0 +1,221 @@
+---
+// Three.js による3D背景アニメーション
+---
+
+<canvas id="three-canvas"></canvas>
+
+<script>
+  import * as THREE from 'three';
+
+  // Three.js アニメーションの初期化と管理
+  let scene: THREE.Scene | null = null;
+  let camera: THREE.PerspectiveCamera | null = null;
+  let renderer: THREE.WebGLRenderer | null = null;
+  let particlesMesh: THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial> | null = null;
+  let torus: THREE.Mesh<THREE.TorusGeometry, THREE.MeshBasicMaterial> | null = null;
+  let torus2: THREE.Mesh<THREE.TorusGeometry, THREE.MeshBasicMaterial> | null = null;
+  let animationId: number | null = null;
+  let mouseX = 0;
+  let mouseY = 0;
+  let time = 0;
+
+  // マウスムーブハンドラー
+  const handleMouseMove = (event: MouseEvent) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+  };
+
+  // リサイズハンドラー
+  const handleResize = () => {
+    if (!camera || !renderer) return;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  };
+
+  // Three.jsアニメーションの初期化
+  function initThreeAnimation() {
+    const canvas = document.getElementById('three-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    // 既存のアニメーションをクリーンアップ
+    cleanupThreeAnimation();
+
+    // シーン、カメラ、レンダラーの設定
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    camera.position.z = 5;
+
+    // パーティクルシステムの作成
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 5000;
+    const posArray = new Float32Array(particlesCount * 3);
+    const colorArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+      // ランダムな位置
+      posArray[i] = (Math.random() - 0.5) * 100;
+      posArray[i + 1] = (Math.random() - 0.5) * 100;
+      posArray[i + 2] = (Math.random() - 0.5) * 100;
+
+      // ランダムな色（紫、ピンク、青の系統）
+      const colorType = Math.random();
+      if (colorType < 0.33) {
+        // 紫
+        colorArray[i] = 0.66;
+        colorArray[i + 1] = 0.33;
+        colorArray[i + 2] = 0.97;
+      } else if (colorType < 0.66) {
+        // ピンク
+        colorArray[i] = 0.93;
+        colorArray[i + 1] = 0.28;
+        colorArray[i + 2] = 0.60;
+      } else {
+        // 青
+        colorArray[i] = 0.23;
+        colorArray[i + 1] = 0.51;
+        colorArray[i + 2] = 0.96;
+      }
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    // パーティクル用マテリアル
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.15,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+    });
+
+    particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    // 回転するトーラス（ドーナツ型）の追加
+    const torusGeometry = new THREE.TorusGeometry(10, 3, 16, 100);
+    const torusMaterial = new THREE.MeshBasicMaterial({
+      color: 0xa855f7,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.3,
+    });
+    torus = new THREE.Mesh(torusGeometry, torusMaterial);
+    scene.add(torus);
+
+    // 2つ目のトーラス
+    const torus2Geometry = new THREE.TorusGeometry(15, 2, 16, 100);
+    const torus2Material = new THREE.MeshBasicMaterial({
+      color: 0xec4899,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.2,
+    });
+    torus2 = new THREE.Mesh(torus2Geometry, torus2Material);
+    torus2.rotation.x = Math.PI / 4;
+    scene.add(torus2);
+
+    // イベントリスナーの追加
+    document.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+
+    // アニメーションループの開始
+    time = 0;
+    animate();
+  }
+
+  // アニメーションループ
+  function animate() {
+    if (!scene || !camera || !renderer || !particlesMesh || !torus || !torus2) return;
+
+    animationId = requestAnimationFrame(animate);
+    time += 0.001;
+
+    // パーティクルの回転とうねり
+    particlesMesh.rotation.y = time * 0.3;
+    particlesMesh.rotation.x = Math.sin(time) * 0.1;
+
+    // トーラスの回転
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.005;
+    torus.rotation.z += 0.003;
+
+    torus2.rotation.x += 0.005;
+    torus2.rotation.y += 0.01;
+    torus2.rotation.z += 0.002;
+
+    // マウス追従
+    camera.position.x = mouseX * 2;
+    camera.position.y = mouseY * 2;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+
+  // クリーンアップ
+  function cleanupThreeAnimation() {
+    // アニメーションループの停止
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
+    // イベントリスナーの削除
+    document.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('resize', handleResize);
+
+    // Three.jsオブジェクトのクリーンアップ
+    if (particlesMesh) {
+      particlesMesh.geometry.dispose();
+      particlesMesh.material.dispose();
+      particlesMesh = null;
+    }
+
+    if (torus) {
+      torus.geometry.dispose();
+      torus.material.dispose();
+      torus = null;
+    }
+
+    if (torus2) {
+      torus2.geometry.dispose();
+      torus2.material.dispose();
+      torus2 = null;
+    }
+
+    if (renderer) {
+      renderer.dispose();
+      renderer = null;
+    }
+
+    scene = null;
+    camera = null;
+  }
+
+  // Astro View Transitionsに対応した初期化
+  document.addEventListener('astro:page-load', () => {
+    initThreeAnimation();
+  });
+
+  // ページ離脱時のクリーンアップ
+  document.addEventListener('astro:before-preparation', () => {
+    cleanupThreeAnimation();
+  });
+</script>
+
+<style>
+  #three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+</style>

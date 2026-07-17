@@ -1,0 +1,87 @@
+---
+import Card from './Card.astro';
+---
+
+<section class="features">
+  <div class="container">
+    <h2 class="section-title shimmer-text">Features</h2>
+    <p class="section-subtitle">Cutting-edge features that shine through the darkness</p>
+
+    <div class="features-grid">
+      <Card
+        icon="🌌"
+        title="Three.js Particles"
+        description="5000 particles weaving a beautiful 3D space. An immersive background that responds to mouse movement."
+      />
+      <Card
+        icon="✨"
+        title="Glitch Effects"
+        description="Futuristic glitch animations that make text dance. The aesthetics of the dark side."
+      />
+      <Card
+        icon="🎨"
+        title="Rich Animations"
+        description="An animated experience using CSS animations, transforms, and blend modes."
+      />
+      <Card
+        icon="🌈"
+        title="Gradients"
+        description="A captivating color palette woven with purple, pink, and blue."
+      />
+      <Card
+        icon="⚡"
+        title="Fast Performance"
+        description="Beautiful and fast thanks to Astro's static site generation."
+      />
+      <Card
+        icon="🎭"
+        title="Customizable"
+        description="Easily customize the color theme with CSS variables. Create your own darkness."
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 5rem 2rem;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-dim);
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

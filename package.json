@@ -1,0 +1,44 @@
+{
+  "name": "astro-darkness",
+  "type": "module",
+  "version": "1.1.0",
+  "description": "A dark-themed Astro portfolio/blog template with Three.js particles and modern animations",
+  "keywords": [
+    "astro",
+    "theme",
+    "blog",
+    "portfolio",
+    "dark-mode",
+    "three.js",
+    "typescript"
+  ],
+  "author": "kpab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kpab/astro-darkness"
+  },
+  "homepage": "https://kpab.github.io/astro-darkness",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.0",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^6.0.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/three": "^0.184.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

@@ -1,0 +1,278 @@
+---
+// Hero section - Clean, professional design
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="greeting">Hello, I'm</div>
+    <h1 class="hero-title">
+      <span class="title-text">DARKNESS</span>
+    </h1>
+    <p class="hero-subtitle">Web Developer & Creative Coder</p>
+    <p class="hero-description">
+      Building immersive web experiences with Three.js, modern animations, and dark aesthetics.
+      Specializing in motion-rich interfaces that push the boundaries of what's possible on the web.
+    </p>
+    <div class="hero-buttons">
+      <a href={`${base}projects/`} class="btn btn-primary">
+        <span>View Projects</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+      <a href={`${base}blog/`} class="btn btn-secondary">
+        <span>Read Blog</span>
+      </a>
+    </div>
+
+    <!-- Tech stack badges -->
+    <div class="tech-stack">
+      <span class="tech-badge">TypeScript</span>
+      <span class="tech-badge">React</span>
+      <span class="tech-badge">Three.js</span>
+      <span class="tech-badge">Astro</span>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="hero-decoration">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: calc(var(--nav-height) + 2rem) 2rem 4rem;
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 10;
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .greeting {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 12vw, 7rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .title-text {
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 50%, var(--color-accent-purple) 100%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 4s ease infinite;
+  }
+
+  @keyframes gradientFlow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    color: var(--color-text-dim);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  }
+
+  .btn-primary:hover {
+    background: #2563EB;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  }
+
+  .btn-primary svg {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover svg {
+    transform: translateX(4px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--color-primary);
+  }
+
+  .tech-stack {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .tech-badge {
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--color-border);
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-text-dim);
+    transition: all 0.2s ease;
+  }
+
+  .tech-badge:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* Decorative glows */
+  .hero-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+
+  .glow-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-primary);
+    top: 10%;
+    left: 10%;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .glow-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-accent-purple);
+    bottom: 20%;
+    right: 10%;
+    animation: float 6s ease-in-out infinite reverse;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(20px, -20px);
+    }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .title-text {
+      animation: none;
+    }
+    .glow-1, .glow-2 {
+      animation: none;
+    }
+    .hero-content {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: calc(var(--nav-height) + 3rem);
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+  }
+</style>

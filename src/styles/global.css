@@ -1,0 +1,140 @@
+/* Global styles for dark abyss theme */
+:root {
+  /* Color Palette - Developer Dark Theme */
+  --color-bg-dark: #0F172A;
+  --color-bg-darker: #020617;
+  --color-bg-card: #1E293B;
+  --color-primary: #3B82F6;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-pink: #EC4899;
+  --color-accent-blue: #3B82F6;
+  --color-accent-cyan: #06B6D4;
+  --color-text: #F1F5F9;
+  --color-text-dim: #94A3B8;
+  --color-border: #334155;
+  --color-shadow: rgba(59, 130, 246, 0.3);
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* Spacing */
+  --nav-height: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Headings use Space Grotesk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background gradient */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  animation: gradientShift 20s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(10%, -10%) rotate(120deg);
+  }
+  66% {
+    transform: translate(-10%, 10%) rotate(240deg);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-accent-purple), var(--color-accent-pink));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-accent-pink), var(--color-accent-blue));
+}
+
+/* Global animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--color-shadow);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--color-shadow), 0 0 60px var(--color-shadow);
+  }
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-purple),
+    var(--color-accent-pink),
+    var(--color-accent-blue),
+    var(--color-accent-purple)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 3s linear infinite;
+}
