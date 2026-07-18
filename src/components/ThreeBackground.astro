@@ -14,6 +14,7 @@
   let particlesMesh: THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial> | null = null;
   let torus: THREE.Mesh<THREE.TorusGeometry, THREE.MeshBasicMaterial> | null = null;
   let torus2: THREE.Mesh<THREE.TorusGeometry, THREE.MeshBasicMaterial> | null = null;
+  let asteroidRing: THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial> | null = null;
   let animationId: number | null = null;
   let mouseX = 0;
   let mouseY = 0;
@@ -50,35 +51,40 @@
     renderer.setPixelRatio(window.devicePixelRatio);
     camera.position.z = 5;
 
-    // パーティクルシステムの作成
+    // パーティクルシステムの作成（球体散射算法：保持粒子舒展通透，不靠拢贴近）
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 7500;
+    const particlesCount = 6000;
     const posArray = new Float32Array(particlesCount * 3);
     const colorArray = new Float32Array(particlesCount * 3);
 
-    for (let i = 0; i < particlesCount * 3; i += 3) {
-      // ランダムな位置 (视场内密度充实且不臃肿)
-      posArray[i] = (Math.random() - 0.5) * 70;
-      posArray[i + 1] = (Math.random() - 0.5) * 70;
-      posArray[i + 2] = (Math.random() - 0.5) * 70;
+    for (let i = 0; i < particlesCount; i++) {
+      const idx = i * 3;
+      // 随机半径范围 15~90，保持中间留白与广阔散落，粒子离得不贴近
+      const radius = 15 + Math.random() * 75;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos((Math.random() * 2) - 1);
 
-      // ランダムな色（紫、ピンク、青の系統）
+      posArray[idx] = radius * Math.sin(phi) * Math.cos(theta);
+      posArray[idx + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      posArray[idx + 2] = radius * Math.cos(phi);
+
+      // 炫彩粒子颜色（电光紫、炫彩粉、极光青）
       const colorType = Math.random();
-      if (colorType < 0.33) {
-        // 紫
-        colorArray[i] = 0.66;
-        colorArray[i + 1] = 0.33;
-        colorArray[i + 2] = 0.97;
-      } else if (colorType < 0.66) {
-        // ピンク
-        colorArray[i] = 0.93;
-        colorArray[i + 1] = 0.28;
-        colorArray[i + 2] = 0.60;
+      if (colorType < 0.35) {
+        // 霓虹紫
+        colorArray[idx] = 0.66;
+        colorArray[idx + 1] = 0.33;
+        colorArray[idx + 2] = 0.97;
+      } else if (colorType < 0.70) {
+        // 电光青
+        colorArray[idx] = 0.02;
+        colorArray[idx + 1] = 0.71;
+        colorArray[idx + 2] = 0.83;
       } else {
-        // 青 / シアン
-        colorArray[i] = 0.23;
-        colorArray[i + 1] = 0.65;
-        colorArray[i + 2] = 0.96;
+        // 炫光粉
+        colorArray[idx] = 0.93;
+        colorArray[idx + 1] = 0.28;
+        colorArray[idx + 2] = 0.60;
       }
     }
 
@@ -94,8 +100,8 @@
       if (ctx) {
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
         gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-        gradient.addColorStop(0.25, 'rgba(255, 255, 255, 0.9)');
-        gradient.addColorStop(0.55, 'rgba(255, 255, 255, 0.25)');
+        gradient.addColorStop(0.25, 'rgba(255, 255, 255, 0.85)');
+        gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
         ctx.fillStyle = gradient;
@@ -113,11 +119,11 @@
 
     // パーティクル用マテリアル
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.28,
+      size: 0.26,
       map: circleTexture,
       vertexColors: true,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.8,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
     });
@@ -125,7 +131,7 @@
     particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // 回転するトーラス（ドーナツ型）の追加
+    // 保留旧的第 1 个トーラス
     const torusGeometry = new THREE.TorusGeometry(10, 3, 16, 100);
     const torusMaterial = new THREE.MeshBasicMaterial({
       color: 0xa855f7,
@@ -136,7 +142,7 @@
     torus = new THREE.Mesh(torusGeometry, torusMaterial);
     scene.add(torus);
 
-    // 2つ目のトーラス
+    // 保留旧的第 2 つ目のトーラス
     const torus2Geometry = new THREE.TorusGeometry(15, 2, 16, 100);
     const torus2Material = new THREE.MeshBasicMaterial({
       color: 0xec4899,
@@ -147,6 +153,54 @@
     torus2 = new THREE.Mesh(torus2Geometry, torus2Material);
     torus2.rotation.x = Math.PI / 4;
     scene.add(torus2);
+
+    // ==========================================
+    // 新增：类似土星的小行星带星环 (Saturn Asteroid Ring)
+    // ==========================================
+    const ringParticlesCount = 3200;
+    const ringGeometry = new THREE.BufferGeometry();
+    const ringPos = new Float32Array(ringParticlesCount * 3);
+    const ringColors = new Float32Array(ringParticlesCount * 3);
+
+    for (let i = 0; i < ringParticlesCount; i++) {
+      const idx = i * 3;
+      // 环盘内径 7.5，外径 13.5
+      const r = 7.5 + Math.random() * 6.0;
+      const theta = Math.random() * Math.PI * 2;
+      const z = (Math.random() - 0.5) * 0.35; // 纤薄盘面
+
+      ringPos[idx] = r * Math.cos(theta);
+      ringPos[idx + 1] = r * Math.sin(theta);
+      ringPos[idx + 2] = z;
+
+      // 小行星光点色彩（亮彩、粉紫、星光白）
+      const rand = Math.random();
+      if (rand < 0.45) {
+        ringColors[idx] = 0.66; ringColors[idx + 1] = 0.33; ringColors[idx + 2] = 0.97;
+      } else if (rand < 0.75) {
+        ringColors[idx] = 0.96; ringColors[idx + 1] = 0.96; ringColors[idx + 2] = 1.0;
+      } else {
+        ringColors[idx] = 0.93; ringColors[idx + 1] = 0.28; ringColors[idx + 2] = 0.60;
+      }
+    }
+
+    ringGeometry.setAttribute('position', new THREE.BufferAttribute(ringPos, 3));
+    ringGeometry.setAttribute('color', new THREE.BufferAttribute(ringColors, 3));
+
+    const ringMaterial = new THREE.PointsMaterial({
+      size: 0.18,
+      map: circleTexture,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+
+    asteroidRing = new THREE.Points(ringGeometry, ringMaterial);
+    asteroidRing.rotation.x = Math.PI / 3;
+    asteroidRing.rotation.y = Math.PI / 8;
+    scene.add(asteroidRing);
 
     // イベントリスナーの追加
     document.addEventListener('mousemove', handleMouseMove);
@@ -165,10 +219,10 @@
     time += 0.001;
 
     // パーティクルの回転とうねり
-    particlesMesh.rotation.y = time * 0.3;
-    particlesMesh.rotation.x = Math.sin(time) * 0.1;
+    particlesMesh.rotation.y = time * 0.15;
+    particlesMesh.rotation.x = Math.sin(time * 0.5) * 0.08;
 
-    // トーラスの回転
+    // トーラスの回転（恢复旧旋转逻辑）
     torus.rotation.x += 0.01;
     torus.rotation.y += 0.005;
     torus.rotation.z += 0.003;
@@ -176,6 +230,11 @@
     torus2.rotation.x += 0.005;
     torus2.rotation.y += 0.01;
     torus2.rotation.z += 0.002;
+
+    // 土星小行星环动态沿轨道旋转
+    if (asteroidRing) {
+      asteroidRing.rotation.z += 0.0018;
+    }
 
     // マウス追従
     camera.position.x = mouseX * 2;
@@ -217,6 +276,15 @@
       torus2.geometry.dispose();
       torus2.material.dispose();
       torus2 = null;
+    }
+
+    if (asteroidRing) {
+      asteroidRing.geometry.dispose();
+      if (asteroidRing.material.map) {
+        asteroidRing.material.map.dispose();
+      }
+      asteroidRing.material.dispose();
+      asteroidRing = null;
     }
 
     if (renderer) {
