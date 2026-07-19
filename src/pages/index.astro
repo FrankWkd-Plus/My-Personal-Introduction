@@ -5,6 +5,29 @@ import Hero from '../components/Hero.astro';
 ---
 
 <BaseLayout title="Outwardly Verse - Web Developer & Creative Explorer">
-  <Navigation />
-  <Hero />
+  <div class="home-container">
+    <Navigation />
+    <Hero />
+  </div>
 </BaseLayout>
+
+<style is:global>
+  /* 仅主页锁定不可下滑 */
+  html:has(.home-container),
+  body:has(.home-container) {
+    height: 100vh !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+</style>
+
+<style>
+  .home-container {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+  }
+</style>

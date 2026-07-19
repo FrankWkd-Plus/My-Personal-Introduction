@@ -1,5 +1,5 @@
 ---
-// Navigation component - Floating navbar with SVG icons
+// Navigation component - Floating navbar with SVG icons & external link icons
 const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 // BASE_URLを除いたパスで比較
@@ -14,11 +14,21 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
       <a href={base} class:list={['nav-link', { active: relativePath === '/' }]}>
         Home
       </a>
-      <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="nav-link">
-        Blog
+      <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="nav-link nav-external">
+        <span>Blog</span>
+        <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
       </a>
-      <a href="https://github.com/FrankWkd-Plus?tab=repositories" target="_blank" rel="noopener noreferrer" class="nav-link">
-        Projects
+      <a href="https://github.com/FrankWkd-Plus?tab=repositories" target="_blank" rel="noopener noreferrer" class="nav-link nav-external">
+        <span>Projects</span>
+        <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
       </a>
       <a href={`${base}about/`} class:list={['nav-link', { active: relativePath.startsWith('/about') }]}>
         About
@@ -40,8 +50,22 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-content">
     <a href={base} class:list={['mobile-nav-link', { active: relativePath === '/' }]}>Home</a>
-    <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Blog</a>
-    <a href="https://github.com/FrankWkd-Plus?tab=repositories" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Projects</a>
+    <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-external">
+      <span>Blog</span>
+      <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+    </a>
+    <a href="https://github.com/FrankWkd-Plus?tab=repositories" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-external">
+      <span>Projects</span>
+      <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+    </a>
     <a href={`${base}about/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/about') }]}>About</a>
   </div>
 </div>
@@ -87,6 +111,7 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
   .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
   }
 
   .nav-link {
@@ -97,6 +122,9 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     position: relative;
     transition: color 0.2s ease;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
   }
 
   .nav-link::after {
@@ -121,6 +149,17 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 
   .nav-link.active {
     color: var(--color-primary);
+  }
+
+  .external-icon {
+    opacity: 0.7;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-link:hover .external-icon,
+  .mobile-external:hover .external-icon {
+    opacity: 1;
+    transform: translate(2px, -2px);
   }
 
   .mobile-menu-btn {
@@ -172,6 +211,12 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     color: var(--color-text-dim);
     text-decoration: none;
     transition: color 0.2s ease;
+  }
+
+  .mobile-external {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .mobile-nav-link:hover,

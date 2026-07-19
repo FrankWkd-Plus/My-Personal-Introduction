@@ -32,9 +32,7 @@ html {
   font-family: var(--font-body);
   background: var(--color-bg-dark);
   color: var(--color-text);
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Headings use Space Grotesk */
@@ -43,10 +41,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Animated background gradient */
