@@ -8,36 +8,10 @@
   搭载 GPU 加速的 5,000 动态交互粒子星空背景，兼具极致性能体验与现代极客审美。
 </p>
 
-<p align="center">
-  <a href="https://astro.build/"><img src="https://img.shields.io/badge/Astro-6.x-883AEA?style=for-the-badge&logo=astro&logoColor=white" alt="Astro 6"></a>
-  <a href="https://threejs.org/"><img src="https://img.shields.io/badge/Three.js-v0.184-black?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js"></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-41D1FF?style=for-the-badge" alt="License"></a>
-</p>
-
-<p align="center">
-  <a href="https://kpab.github.io/astro-darkness"><strong>🔗 在线预览 (Live Demo)</strong></a> ·
-  <a href="#-快速开始"><strong>🚀 快速开始</strong></a> ·
-  <a href="https://github.com/kpab/astro-darkness"><strong>⭐️ Star 鼓励</strong></a>
-</p>
 
 ---
 
 ![Darkness 主页预览](docs/screenshots/home.png)
-
-## 🚀 一键部署
-
-无需复杂配置，点击下方按钮即可一键部署到您喜爱的托管平台：
-
-| Vercel | Netlify |
-| :---: | :---: |
-| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kpab/astro-darkness) | [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kpab/astro-darkness) |
-
----
-
-## 💎 为什么选择 Darkness？
-
-绝大多数暗黑主题仅仅是翻转了颜色板，而 **Darkness 提供的是真正的 WebGL 视觉体验** —— 响应滚动的 5,000+ 动态粒子背景，同时保持卓越的加载性能与无障碍访问支持。
 
 - ⚡️ **GPU 驱动的三维粒子背景**：基于 Three.js 打造，随页面动态交互，平滑高效。
 - 📝 **现代化博客系统**：内置 Astro Content Collections + MDX 支持，语法高亮与结构化元数据。
@@ -154,18 +128,8 @@ src/
 
 ---
 
-## 💖 支持与贡献
-
-如果 Darkness 为您节省了开发时间或激发了创作灵感，欢迎在 **[GitHub 上为本项目点亮 Star ⭐️](https://github.com/kpab/astro-darkness)**！
-
----
-
 ## 📄 开源许可证
 
 本项目采用 [MIT License](LICENSE) 许可协议。
 
 ---
-
-<p align="center">
-  Crafted with ❤️ by <a href="https://github.com/kpab">kpab</a>
-</p>
