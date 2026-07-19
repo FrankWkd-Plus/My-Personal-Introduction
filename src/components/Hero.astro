@@ -82,12 +82,38 @@ const base = import.meta.env.BASE_URL;
   }
 
   .title-text {
-    background: linear-gradient(135deg, #38BDF8 0%, #A855F7 50%, #EC4899 100%);
-    background-size: 200% auto;
+    position: relative;
+    display: inline-block;
+    background-image: 
+      /* 1. 白色透明荧光笔划过光束 */
+      linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.85) 50%,
+        transparent 62%,
+        transparent 100%
+      ),
+      /* 2. 原基础三色炫彩渐变 */
+      linear-gradient(135deg, #38BDF8 0%, #A855F7 50%, #EC4899 100%);
+    background-size: 250% 100%, 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientFlow 4s ease infinite, cleanBreathe 3s ease-in-out infinite;
+    animation: 
+      highlighterSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+      gradientFlow 5s ease infinite,
+      cleanBreathe 3s ease-in-out infinite;
+  }
+
+  /* 荧光笔划过特效：一次次平滑扫过文字 */
+  @keyframes highlighterSweep {
+    0% {
+      background-position: -150% 0, 0% 50%;
+    }
+    40%, 100% {
+      background-position: 150% 0, 100% 50%;
+    }
   }
 
   /* 纯净呼吸闪烁：无外发光雾，干净利落 */
