@@ -85,13 +85,39 @@
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
 
-    // パーティクル用マテリアル
+    // 圆形真实光晕纹理动态生成器
+    const createCircleGlowTexture = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 64;
+      canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+
+      const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');       // 强发光核心
+      gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.85)');   // 柔和白光内层
+      gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.35)');   // 羽化渐变光晕
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');        // 边缘完全透明
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 64, 64);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+      return texture;
+    };
+
+    const particleTexture = createCircleGlowTexture();
+
+    // パーティクル用マテリアル (圆形真实光晕粒子)
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.15,
+      size: 0.45,
+      map: particleTexture || undefined,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
+      depthWrite: false,
     });
 
     particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -171,6 +197,9 @@
 
     // Three.jsオブジェクトのクリーンアップ
     if (particlesMesh) {
+      if (particlesMesh.material.map) {
+        particlesMesh.material.map.dispose();
+      }
       particlesMesh.geometry.dispose();
       particlesMesh.material.dispose();
       particlesMesh = null;
