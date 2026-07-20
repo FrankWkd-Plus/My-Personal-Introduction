@@ -1,5 +1,5 @@
 ---
-// Navigation component - Floating navbar with SVG icons & external link icons
+// Navigation component - Floating navbar with Theme Switcher & SVG icons
 const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 // BASE_URLを除いたパスで比較
@@ -40,6 +40,31 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
       <a href={`${base}about/`} class:list={['nav-link', { active: relativePath.startsWith('/about') }]}>
         About
       </a>
+
+      <!-- 🧪 Experimental Theme Switcher -->
+      <div class="theme-switcher-wrapper">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle Theme Presets">
+          <span>🧪 Theme</span>
+        </button>
+        <div class="theme-menu" id="theme-menu">
+          <button class="theme-option" data-theme-val="default">
+            <span class="dot dot-default"></span>
+            <span>Default Abyss</span>
+          </button>
+          <button class="theme-option" data-theme-val="cyberpunk">
+            <span class="dot dot-cyberpunk"></span>
+            <span>Cyberpunk Emerald</span>
+          </button>
+          <button class="theme-option" data-theme-val="sunset">
+            <span class="dot dot-sunset"></span>
+            <span>Neon Crimson</span>
+          </button>
+          <button class="theme-option" data-theme-val="stealth">
+            <span class="dot dot-stealth"></span>
+            <span>Monochrome Stealth</span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile menu button -->
@@ -80,6 +105,14 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
       </svg>
     </a>
+
+    <!-- Mobile theme switcher grid -->
+    <div class="mobile-theme-grid">
+      <button class="mobile-theme-item" data-theme-val="default">Default</button>
+      <button class="mobile-theme-item" data-theme-val="cyberpunk">Cyberpunk</button>
+      <button class="mobile-theme-item" data-theme-val="sunset">Sunset</button>
+      <button class="mobile-theme-item" data-theme-val="stealth">Stealth</button>
+    </div>
   </div>
 </div>
 
@@ -145,7 +178,7 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
   }
 
@@ -197,6 +230,106 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     transform: translate(2px, -2px);
   }
 
+  /* Theme Switcher Styles */
+  .theme-switcher-wrapper {
+    position: relative;
+  }
+
+  .theme-btn {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--color-border);
+    border-radius: 2rem;
+    padding: 0.35rem 0.85rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 0.825rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .theme-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--color-primary);
+  }
+
+  .theme-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 180px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 1001;
+  }
+
+  .theme-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease;
+  }
+
+  .theme-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot-default { background: linear-gradient(135deg, #3B82F6, #8B5CF6); }
+  .dot-cyberpunk { background: linear-gradient(135deg, #10B981, #06B6D4); }
+  .dot-sunset { background: linear-gradient(135deg, #F43F5E, #FB923C); }
+  .dot-stealth { background: linear-gradient(135deg, #E2E8F0, #64748B); }
+
+  .mobile-theme-grid {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .mobile-theme-item {
+    padding: 0.4rem 0.875rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
   .mobile-menu-btn {
     display: none;
     background: transparent;
@@ -236,7 +369,7 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     align-items: center;
     justify-content: center;
     height: 100%;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
 
   .mobile-nav-link {
@@ -293,7 +426,39 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 </style>
 
 <script>
+  const setupThemeSwitcher = () => {
+    const themeBtn = document.getElementById('theme-btn');
+    const themeMenu = document.getElementById('theme-menu');
+    const themeOptions = document.querySelectorAll('[data-theme-val]');
+
+    if (themeBtn && themeMenu) {
+      themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeMenu.classList.toggle('open');
+      });
+
+      document.addEventListener('click', () => {
+        themeMenu.classList.remove('open');
+      });
+    }
+
+    const applyTheme = (val: string) => {
+      document.documentElement.setAttribute('data-theme', val);
+      localStorage.setItem('darkness_theme_preset', val);
+      window.dispatchEvent(new CustomEvent('theme-change', { detail: val }));
+    };
+
+    themeOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.getAttribute('data-theme-val');
+        if (val) applyTheme(val);
+        if (themeMenu) themeMenu.classList.remove('open');
+      });
+    });
+  };
+
   document.addEventListener('astro:page-load', () => {
+    setupThemeSwitcher();
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -302,7 +467,6 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
         mobileMenu.classList.toggle('open');
       });
 
-      // Close menu when clicking a link
       const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
