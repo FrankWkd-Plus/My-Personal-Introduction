@@ -170,14 +170,14 @@ const base = import.meta.env.BASE_URL;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.85rem;
+    padding: 0.875rem 1.75rem;
     font-size: 1rem;
     font-weight: 600;
     font-family: var(--font-body);
-    border-radius: 0.9rem;
+    border-radius: 0.6rem;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.2s ease;
     overflow: hidden;
     z-index: 1;
     border: none;
@@ -203,68 +203,46 @@ const base = import.meta.env.BASE_URL;
     z-index: -2;
   }
 
-  /* iOS 液态玻璃内层遮罩：高透明度模糊 + 精致高光 */
+  /* 按钮内层遮罩：精确露出 1.5px 宽度的流水描边 */
   .btn::after {
     content: '';
     position: absolute;
     inset: 1.5px;
-    border-radius: 0.8rem;
+    border-radius: 0.5rem;
     z-index: -1;
-    backdrop-filter: blur(20px) saturate(190%);
-    -webkit-backdrop-filter: blur(20px) saturate(190%);
-    transition: all 0.3s ease;
+    transition: background 0.2s ease;
   }
 
-  /* About Me - iOS 液态天蓝玻璃 */
+  /* About Me - 实色天蓝 */
   .btn-primary::after {
-    background: rgba(59, 130, 246, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45);
+    background: var(--color-primary);
   }
 
   .btn-primary:hover::after {
-    background: rgba(59, 130, 246, 0.38);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: #2563EB;
   }
 
   .btn-primary {
     color: #FFFFFF;
-    box-shadow: 
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
-      0 8px 25px rgba(59, 130, 246, 0.35);
+    box-shadow: 0 4px 14px var(--color-shadow);
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
-      0 12px 35px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 6px 20px var(--color-shadow);
   }
 
-  /* Read Blog - iOS 液态冰晶透光玻璃 */
+  /* Read Blog - 完全透明背景 (不带黑色) */
   .btn-secondary::after {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+    background: transparent;
   }
 
   .btn-secondary:hover::after {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(59, 130, 246, 0.12);
   }
 
   .btn-secondary {
     color: var(--color-text);
-    box-shadow: 
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
-      0 8px 25px rgba(0, 0, 0, 0.35);
-  }
-
-  .btn-secondary:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 
-      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
-      0 12px 35px rgba(0, 0, 0, 0.45);
+    background: transparent;
   }
 
   @keyframes borderSpin {
