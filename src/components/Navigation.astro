@@ -41,10 +41,12 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
         About
       </a>
 
-      <!-- 🧪 Experimental Theme Switcher -->
+      <!-- 🧪 Solid Labs Icon Theme Switcher (No border, no background) -->
       <div class="theme-switcher-wrapper">
         <button class="theme-btn" id="theme-btn" aria-label="Toggle Theme Presets">
-          <span>🧪 Theme</span>
+          <svg class="flask-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 22h12a2 2 0 0 0 1.73-3L14 9.6V4h1a1 1 0 1 0 0-2H9a1 1 0 0 0 0 2h1v5.6L4.27 19A2 2 0 0 0 6 22z"/>
+          </svg>
         </button>
         <div class="theme-menu" id="theme-menu">
           <button class="theme-option" data-theme-val="default">
@@ -55,13 +57,13 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
             <span class="dot dot-cyberpunk"></span>
             <span>Cyberpunk Emerald</span>
           </button>
-          <button class="theme-option" data-theme-val="sunset">
-            <span class="dot dot-sunset"></span>
-            <span>Neon Crimson</span>
+          <button class="theme-option" data-theme-val="aurora">
+            <span class="dot dot-aurora"></span>
+            <span>Nordic Aurora</span>
           </button>
-          <button class="theme-option" data-theme-val="stealth">
-            <span class="dot dot-stealth"></span>
-            <span>Monochrome Stealth</span>
+          <button class="theme-option" data-theme-val="amber">
+            <span class="dot dot-amber"></span>
+            <span>Cosmic Amber</span>
           </button>
         </div>
       </div>
@@ -110,8 +112,8 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     <div class="mobile-theme-grid">
       <button class="mobile-theme-item" data-theme-val="default">Default</button>
       <button class="mobile-theme-item" data-theme-val="cyberpunk">Cyberpunk</button>
-      <button class="mobile-theme-item" data-theme-val="sunset">Sunset</button>
-      <button class="mobile-theme-item" data-theme-val="stealth">Stealth</button>
+      <button class="mobile-theme-item" data-theme-val="aurora">Aurora</button>
+      <button class="mobile-theme-item" data-theme-val="amber">Amber</button>
     </div>
   </div>
 </div>
@@ -230,29 +232,28 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     transform: translate(2px, -2px);
   }
 
-  /* Theme Switcher Styles */
+  /* Solid Labs Icon Theme Switcher (Simplified: No border, no background) */
   .theme-switcher-wrapper {
     position: relative;
+    display: inline-flex;
+    align-items: center;
   }
 
   .theme-btn {
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid var(--color-border);
-    border-radius: 2rem;
-    padding: 0.35rem 0.85rem;
-    color: var(--color-primary);
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    color: var(--color-text-dim);
     cursor: pointer;
-    font-size: 0.825rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    justify-content: center;
   }
 
   .theme-btn:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: scale(1.15);
   }
 
   .theme-menu {
@@ -309,8 +310,8 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 
   .dot-default { background: linear-gradient(135deg, #3B82F6, #8B5CF6); }
   .dot-cyberpunk { background: linear-gradient(135deg, #10B981, #06B6D4); }
-  .dot-sunset { background: linear-gradient(135deg, #F43F5E, #FB923C); }
-  .dot-stealth { background: linear-gradient(135deg, #E2E8F0, #64748B); }
+  .dot-aurora { background: linear-gradient(135deg, #A855F7, #38BDF8); }
+  .dot-amber { background: linear-gradient(135deg, #F59E0B, #EF4444); }
 
   .mobile-theme-grid {
     display: flex;
