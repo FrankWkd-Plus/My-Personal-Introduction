@@ -1,6 +1,7 @@
 /* Global styles for dark abyss theme */
-:root {
-  /* Color Palette - Developer Dark Theme */
+:root,
+html[data-theme="default"] {
+  /* Color Palette - Default Abyss */
   --color-bg-dark: #030712;
   --color-bg-darker: #000000;
   --color-bg-card: #0B132B;
@@ -20,6 +21,54 @@
 
   /* Spacing */
   --nav-height: 80px;
+}
+
+html[data-theme="cyberpunk"] {
+  /* Cyberpunk Emerald */
+  --color-bg-dark: #02120A;
+  --color-bg-darker: #000804;
+  --color-bg-card: #062817;
+  --color-primary: #10B981;
+  --color-accent-purple: #06B6D4;
+  --color-accent-pink: #F59E0B;
+  --color-accent-blue: #3B82F6;
+  --color-accent-cyan: #10B981;
+  --color-text: #ECFDF5;
+  --color-text-dim: #6EE7B7;
+  --color-border: #064E3B;
+  --color-shadow: rgba(16, 185, 129, 0.25);
+}
+
+html[data-theme="aurora"] {
+  /* Nordic Aurora 极光紫 */
+  --color-bg-dark: #0B0716;
+  --color-bg-darker: #05030A;
+  --color-bg-card: #180F30;
+  --color-primary: #A855F7;
+  --color-accent-purple: #C084FC;
+  --color-accent-pink: #F43F5E;
+  --color-accent-blue: #38BDF8;
+  --color-accent-cyan: #38BDF8;
+  --color-text: #FAF5FF;
+  --color-text-dim: #E9D5FF;
+  --color-border: #3B0764;
+  --color-shadow: rgba(168, 85, 247, 0.25);
+}
+
+html[data-theme="amber"] {
+  /* Cosmic Amber 宇宙琥珀金 */
+  --color-bg-dark: #120A03;
+  --color-bg-darker: #080401;
+  --color-bg-card: #261506;
+  --color-primary: #F59E0B;
+  --color-accent-purple: #FBBF24;
+  --color-accent-pink: #EF4444;
+  --color-accent-blue: #FB923C;
+  --color-accent-cyan: #84CC16;
+  --color-text: #FFFBEB;
+  --color-text-dim: #FDE68A;
+  --color-border: #451A03;
+  --color-shadow: rgba(245, 158, 11, 0.25);
 }
 
 * {

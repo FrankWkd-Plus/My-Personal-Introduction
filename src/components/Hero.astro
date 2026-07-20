@@ -167,12 +167,12 @@ const base = import.meta.env.BASE_URL;
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 1.75rem;
     font-size: 1rem;
     font-weight: 600;
     font-family: var(--font-body);
-    border: none;
     border-radius: 0.5rem;
     cursor: pointer;
     text-decoration: none;
@@ -182,20 +182,13 @@ const base = import.meta.env.BASE_URL;
   .btn-primary {
     background: var(--color-primary);
     color: white;
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    border: none;
+    box-shadow: 0 4px 14px var(--color-shadow);
   }
 
   .btn-primary:hover {
     background: #2563EB;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-  }
-
-  .btn-primary svg {
-    transition: transform 0.2s ease;
-  }
-
-  .btn-primary:hover svg {
-    transform: translateX(4px);
+    box-shadow: 0 6px 20px var(--color-shadow);
   }
 
   .btn-secondary {
@@ -207,6 +200,26 @@ const base = import.meta.env.BASE_URL;
   .btn-secondary:hover {
     background: rgba(59, 130, 246, 0.1);
     border-color: var(--color-primary);
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover svg,
+  .btn-secondary:hover svg {
+    transform: translateX(3px);
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover svg,
+  .btn-secondary:hover svg {
+    transform: translateX(3px);
   }
 
   .tech-stack {
