@@ -12,7 +12,7 @@
   <a href="https://astro.build/"><img src="https://img.shields.io/badge/Astro-6.x-883AEA?style=for-the-badge&logo=astro&logoColor=white" alt="Astro 6"></a>
   <a href="https://threejs.org/"><img src="https://img.shields.io/badge/Three.js-v0.184-black?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-41D1FF?style=for-the-badge" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge" alt="License"></a>
 </p>
 
 ---
@@ -183,7 +183,7 @@ src/
 
 ## 📄 开源许可证
 
-本项目采用 [MIT License](LICENSE) 许可协议。
+本项目采用 [GNU General Public License v3.0 (GPL-3.0)](LICENSE) 许可协议。
 
 ---
 
