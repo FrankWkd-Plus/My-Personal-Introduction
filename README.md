@@ -20,7 +20,6 @@
   <a href="#快速开始"><strong>🚀 快速开始</strong></a> ·
   <a href="#网站内容配置"><strong>📔 网站配置</strong></a>
 </p>
----
 
 <table align="center" width="100%">
   <tr>
