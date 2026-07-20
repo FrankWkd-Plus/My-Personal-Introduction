@@ -7,32 +7,33 @@ const base = import.meta.env.BASE_URL;
   <div class="hero-content">
     <div class="greeting">Hello, I'm</div>
     <h1 class="hero-title">
-      <span class="title-text">DARKNESS</span>
+      <span class="title-text">Outwardly Verse</span>
     </h1>
-    <p class="hero-subtitle">Web Developer & Creative Coder</p>
-    <p class="hero-description">
-      Building immersive web experiences with Three.js, modern animations, and dark aesthetics.
-      Specializing in motion-rich interfaces that push the boundaries of what's possible on the web.
-    </p>
+    <p class="hero-subtitle">Web Developer & Creative Explorer</p>
     <div class="hero-buttons">
-      <a href={`${base}projects/`} class="btn btn-primary">
-        <span>View Projects</span>
+      <a href={`${base}about/`} class="btn btn-primary">
+        <span>About Me</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </a>
-      <a href={`${base}blog/`} class="btn btn-secondary">
+      <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
         <span>Read Blog</span>
+        <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
       </a>
     </div>
 
     <!-- Tech stack badges -->
     <div class="tech-stack">
-      <span class="tech-badge">TypeScript</span>
-      <span class="tech-badge">React</span>
-      <span class="tech-badge">Three.js</span>
-      <span class="tech-badge">Astro</span>
+      <span class="tech-badge">C++</span>
+      <span class="tech-badge">JavaScript</span>
+      <span class="tech-badge">Rust</span>
+      <span class="tech-badge">Python</span>
     </div>
   </div>
 
@@ -45,13 +46,14 @@ const base = import.meta.env.BASE_URL;
 
 <style>
   .hero {
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: calc(var(--nav-height) + 2rem) 2rem 4rem;
+    padding: var(--nav-height) 2rem 2rem;
   }
 
   .hero-content {
@@ -62,30 +64,69 @@ const base = import.meta.env.BASE_URL;
   }
 
   .greeting {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--color-primary);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #38BDF8;
     margin-bottom: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-weight: 700;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
   }
 
   .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 12vw, 7rem);
+    font-size: clamp(2rem, 9.5vw, 6.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
-    line-height: 1;
+    line-height: 1.1;
+    word-break: break-word;
   }
 
   .title-text {
-    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 50%, var(--color-accent-purple) 100%);
-    background-size: 200% auto;
+    position: relative;
+    display: inline-block;
+    background-image: 
+      /* 1. 白色透明荧光笔划过光束 */
+      linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.85) 50%,
+        transparent 62%,
+        transparent 100%
+      ),
+      /* 2. 原基础三色炫彩渐变 */
+      linear-gradient(135deg, #38BDF8 0%, #A855F7 50%, #EC4899 100%);
+    background-size: 250% 100%, 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientFlow 4s ease infinite;
+    animation: 
+      highlighterSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+      gradientFlow 5s ease infinite,
+      cleanBreathe 3s ease-in-out infinite;
+  }
+
+  /* 荧光笔划过特效：一次次平滑扫过文字 */
+  @keyframes highlighterSweep {
+    0% {
+      background-position: -150% 0, 0% 50%;
+    }
+    40%, 100% {
+      background-position: 150% 0, 100% 50%;
+    }
+  }
+
+  /* 纯净呼吸闪烁：无外发光雾，干净利落 */
+  @keyframes cleanBreathe {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.75;
+      transform: scale(0.995);
+    }
   }
 
   @keyframes gradientFlow {
@@ -205,7 +246,7 @@ const base = import.meta.env.BASE_URL;
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.4;
+    opacity: 0.15;
   }
 
   .glow-1 {
@@ -261,18 +302,40 @@ const base = import.meta.env.BASE_URL;
 
   @media (max-width: 768px) {
     .hero {
-      padding-top: calc(var(--nav-height) + 3rem);
+      padding: calc(var(--nav-height) + 1.5rem) 1.25rem 2rem;
+    }
+
+    .greeting {
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero-buttons {
       flex-direction: column;
       align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
     }
 
     .btn {
       width: 100%;
-      max-width: 280px;
+      max-width: 260px;
       justify-content: center;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .tech-stack {
+      gap: 0.5rem;
+    }
+
+    .tech-badge {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.85rem;
     }
   }
 </style>

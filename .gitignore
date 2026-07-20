@@ -1,59 +1,74 @@
 # ==========================================
-# 编译产物 & 临时文件 (C/C++ / Web 等)
+# 1. C/C++ 编译产物与可执行文件
 # ==========================================
 *.o
 *.obj
 *.out
 *.exe
+*.out
 *.gch
 *.d
-*.a
-*.lib
-*.so
-*.dll
-*.dylib
-*.log
+*.pdb
+*.ilk
 
-# Build 文件夹
+# 常见构建目录
 build/
-dist/
-node_modules/
+CMakefiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
 # ==========================================
-# 编辑器 & IDE 配置 (Vim / VS Code / JetBrains)
+# 2. 编辑器与系统专属文件
 # ==========================================
 # Vim 临时文件
 .*.swp
 .*.swo
-*~
+.swp
+.swo
 
 # VS Code
 .vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
-!.vscode/extensions.json
-.history/
+
+# macOS 系统垃圾
+.DS_Store
+.AppleDouble
+.LSOverride
 
 # JetBrains (Clion / WebStorm 等)
 .idea/
 *.iws
-*.iml
 
 # ==========================================
-# 操作系统特有垃圾文件
+# 3. 依赖包、环境与打包（Node/Web/小程序等）
 # ==========================================
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
+node_modules/
+jspm_packages/
+.npm/
+.yarn/
+yarn-error.log
 
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# 编译/分发产物
+dist/
+out/
+.next/
+.nuxt/
 
-# Linux
-.fuse_hidden*
-.directory
+# 微信小程序/uniapp 等本地编译缓存
+.sourcemap/
+.unpackage/
+
+# ==========================================
+# 4. 本地配置与敏感数据（绝对不能上云）
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+*.local
+*.secrets

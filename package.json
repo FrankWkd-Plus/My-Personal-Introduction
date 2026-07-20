@@ -13,12 +13,12 @@
     "typescript"
   ],
   "author": "kpab",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "https://github.com/kpab/astro-darkness"
   },
-  "homepage": "https://kpab.github.io/astro-darkness",
+  "homepage": "https://ai-work-team-demo.pages.dev",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

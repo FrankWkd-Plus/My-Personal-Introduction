@@ -1,5 +1,5 @@
 ---
-// Navigation component - Floating navbar with SVG icons
+// Navigation component - Floating navbar with SVG icons & external link icons
 const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 // BASE_URLを除いたパスで比較
@@ -8,17 +8,34 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 
 <nav class="nav">
   <div class="nav-container">
-    <a href={base} class="logo">DARKNESS</a>
+    <div class="nav-left">
+      <a href={base} class="logo">Outwardly Verse</a>
+      <a href="https://github.com/FrankWkd-Plus" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub Profile">
+        <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
 
     <div class="nav-links">
       <a href={base} class:list={['nav-link', { active: relativePath === '/' }]}>
         Home
       </a>
-      <a href={`${base}blog/`} class:list={['nav-link', { active: relativePath.startsWith('/blog') }]}>
-        Blog
+      <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="nav-link nav-external">
+        <span>Blog</span>
+        <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
       </a>
-      <a href={`${base}projects/`} class:list={['nav-link', { active: relativePath.startsWith('/projects') }]}>
-        Projects
+      <a href="https://github.com/FrankWkd-Plus?tab=repositories" target="_blank" rel="noopener noreferrer" class="nav-link nav-external">
+        <span>Projects</span>
+        <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
       </a>
       <a href={`${base}about/`} class:list={['nav-link', { active: relativePath.startsWith('/about') }]}>
         About
@@ -40,9 +57,29 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-content">
     <a href={base} class:list={['mobile-nav-link', { active: relativePath === '/' }]}>Home</a>
-    <a href={`${base}blog/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/blog') }]}>Blog</a>
-    <a href={`${base}projects/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/projects') }]}>Projects</a>
+    <a href="https://blog.frankwkd2026.dpdns.org/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-external">
+      <span>Blog</span>
+      <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+    </a>
+    <a href="https://github.com/FrankWkd-Plus?tab=repositories" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-external">
+      <span>Projects</span>
+      <svg class="external-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+    </a>
     <a href={`${base}about/`} class:list={['mobile-nav-link', { active: relativePath.startsWith('/about') }]}>About</a>
+    <a href="https://github.com/FrankWkd-Plus" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-external">
+      <span>GitHub Profile</span>
+      <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+    </a>
   </div>
 </div>
 
@@ -70,23 +107,46 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     justify-content: space-between;
   }
 
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   .logo {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 4.5vw, 1.25rem);
     font-weight: 700;
     text-decoration: none;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     color: var(--color-text);
     transition: color 0.2s ease;
+    white-space: nowrap;
   }
 
   .logo:hover {
     color: var(--color-primary);
   }
 
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-dim);
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 0.2rem;
+    text-decoration: none;
+  }
+
+  .github-link:hover {
+    color: var(--color-text);
+    transform: scale(1.15);
+  }
+
   .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
   }
 
   .nav-link {
@@ -97,6 +157,9 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     position: relative;
     transition: color 0.2s ease;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
   }
 
   .nav-link::after {
@@ -123,6 +186,17 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     color: var(--color-primary);
   }
 
+  .external-icon {
+    opacity: 0.7;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-link:hover .external-icon,
+  .mobile-external:hover .external-icon {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
   .mobile-menu-btn {
     display: none;
     background: transparent;
@@ -144,7 +218,7 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.98);
+    background: rgba(3, 7, 18, 0.98);
     z-index: 999;
     opacity: 0;
     pointer-events: none;
@@ -162,16 +236,22 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
     align-items: center;
     justify-content: center;
     height: 100%;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
   .mobile-nav-link {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 600;
     color: var(--color-text-dim);
     text-decoration: none;
     transition: color 0.2s ease;
+  }
+
+  .mobile-external {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .mobile-nav-link:hover,
@@ -195,7 +275,7 @@ const relativePath = currentPath.replace(base.slice(0, -1), '') || '/';
       top: 0.75rem;
       left: 0.75rem;
       right: 0.75rem;
-      padding: 0.875rem 1rem;
+      padding: 0.75rem 1rem;
     }
 
     .nav-links {

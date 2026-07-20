@@ -5,103 +5,302 @@ import Navigation from '../components/Navigation.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="About - Darkness" description="About me and my work">
+<BaseLayout title="About - FrankWkd's Studio" description="About FrankWkd, Skills, Projects & Contacts">
   <Navigation />
 
   <main class="about-page">
     <div class="container">
-      <h1 class="page-title">About Me</h1>
+      
+      <!-- Studio Header -->
+      <header class="studio-header">
+        <h1 class="studio-title">FrankWkd's Studio</h1>
+        <p class="studio-slogan">&gt; Love loves to love love.</p>
+      </header>
 
-      <div class="content-grid">
-        <section class="content-section intro-section">
-          <h2>Hello, I'm Darkness</h2>
-          <p>
-            I'm a web developer and creative coder passionate about building immersive digital experiences.
-            My work sits at the intersection of art and technology, where I explore the possibilities of
-            modern web technologies to create visually striking, motion-rich interfaces.
-          </p>
-          <p>
-            With a deep love for dark aesthetics and smooth animations, I specialize in crafting websites
-            that aren't just functional—they're experiences that captivate and engage users from the moment
-            they land on the page.
-          </p>
-        </section>
-
-        <section class="content-section">
-          <h2>What I Do</h2>
-          <div class="what-i-do-grid">
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <circle cx="12" cy="12" r="6"></circle>
-                  <circle cx="12" cy="12" r="2"></circle>
-                </svg>
-              </div>
-              <h3>Creative Development</h3>
-              <p>Building unique web experiences with Three.js, WebGL, and advanced CSS animations.</p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                </svg>
-              </div>
-              <h3>Performance Optimization</h3>
-              <p>Ensuring smooth 60fps animations and optimal loading times with modern tooling.</p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <h3>3D Graphics</h3>
-              <p>Creating particle systems, geometric patterns, and interactive 3D elements for the web.</p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-              </div>
-              <h3>Dark UI Design</h3>
-              <p>Designing beautiful dark-themed interfaces with carefully crafted color palettes.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="content-section">
-          <h2>My Approach</h2>
-          <p>
-            I believe that motion is emotion. Every animation, every transition, every particle movement
-            should have a purpose—to guide, to delight, or to immerse. I'm constantly pushing the boundaries
-            of what's possible on the web, experimenting with new techniques and technologies.
-          </p>
-          <p>
-            Whether it's a personal blog, a portfolio site, or a complex web application, I approach each
-            project with the same goal: create something that stands out, performs well, and provides an
-            unforgettable user experience.
-          </p>
-        </section>
-
-        <section class="content-section cta-section">
-          <h2>Let's Connect</h2>
-          <p>Interested in working together or just want to chat about web animations and dark design?</p>
-          <div class="contact-buttons">
-            <a href={`${base}projects/`} class="btn btn-primary">
-              View My Work
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
-            <a href={`${base}blog/`} class="btn btn-secondary">Read My Blog</a>
-          </div>
-        </section>
+      <!-- Tip Alert Box -->
+      <div class="tip-alert">
+        <div class="tip-icon">📔</div>
+        <div class="tip-content">
+          <strong>写在前面：</strong> 请有话直说、一定要及时沟通 🤍（本人可 i 可 e）
+        </div>
       </div>
+
+      <!-- About Me Section -->
+      <section class="section-card">
+        <h2 class="section-heading">
+          <span class="icon">🤔</span> About Me
+        </h2>
+        <div class="tags-container">
+          <span class="tag tag-purple">独立开发者</span>
+          <span class="tag tag-pink">ENFJ 主人公</span>
+          <span class="tag tag-blue">摄影发烧友</span>
+          <span class="tag tag-cyan">爱玩 & 啥都想知道</span>
+        </div>
+        <div class="about-grid">
+          <div class="info-box">
+            <h3>💡 个人态度</h3>
+            <p>喜欢创造开发，一直折腾。关注科技热点，任何天马行空或特定技术话题都🉑聊！</p>
+          </div>
+          <div class="info-box">
+            <h3>⚙️ Working on</h3>
+            <p><strong>Web 独立开发</strong> || <strong>桌面应用开发</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- My Skills Section -->
+      <section class="section-card">
+        <h2 class="section-heading">
+          <span class="icon">⚙️</span> My Skills
+        </h2>
+        <div class="skills-summary-grid">
+          <div class="skill-summary-card">
+            <h4>💻 技术</h4>
+            <p>软件和 Web 都擅长，基本不玩硬件 🫠</p>
+          </div>
+          <div class="skill-summary-card">
+            <h4>🎨 美工 & 摄影</h4>
+            <p>擅长 PPT、前端勉强会 || 擅长剪辑 & 摄影</p>
+          </div>
+          <div class="skill-summary-card">
+            <h4>📝 文字</h4>
+            <p>基本所有类型都 🉑，可接稿件文件数据表，学习吸收能力很强</p>
+          </div>
+          <div class="skill-summary-card">
+            <h4>🗣️ 表达 (ENFJ 舒适区)</h4>
+            <p>可演讲 (有 TEDx 经验)，可协调组织，可讲故事，可随机应变 / 即兴讲演</p>
+          </div>
+        </div>
+
+        <!-- Skills Badges Table / Grid -->
+        <div class="skills-matrix">
+          <div class="matrix-row">
+            <div class="matrix-label">System</div>
+            <div class="matrix-badges">
+              <img src="https://img.shields.io/badge/-Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
+              <img src="https://img.shields.io/badge/-Arch%20Linux-1793D1?style=flat-square&logo=arch-linux&logoColor=white" alt="Arch Linux" />
+            </div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-label">Languages</div>
+            <div class="matrix-badges">
+              <img src="https://img.shields.io/badge/-C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++" />
+              <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+              <img src="https://img.shields.io/badge/-Rust-000000?style=flat-square&logo=rust&logoColor=white" alt="Rust" />
+              <img src="https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js" />
+              <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
+            </div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-label">Tools</div>
+            <div class="matrix-badges">
+              <img src="https://img.shields.io/badge/-Vim-019733?style=flat-square&logo=vim&logoColor=white" alt="Vim" />
+              <img src="https://img.shields.io/badge/-VS%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white" alt="VS Code" />
+              <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker" />
+              <img src="https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
+              <img src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
+              <img src="https://img.shields.io/badge/-Cloudflare-F38020?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare" />
+              <img src="https://img.shields.io/badge/-Obsidian-483699?style=flat-square&logo=obsidian&logoColor=white" alt="Obsidian" />
+            </div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-label">AI</div>
+            <div class="matrix-badges">
+              <img src="https://img.shields.io/badge/-Gemini-8E75FF?style=flat-square&logo=googlegemini&logoColor=white" alt="Gemini" />
+              <img src="https://img.shields.io/badge/-Claude-D97757?style=flat-square&logo=claude&logoColor=white" alt="Claude" />
+              <img src="https://img.shields.io/badge/Perplexity-20B2AA?style=flat-square&logo=perplexity&logoColor=white" alt="Perplexity" />
+            </div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-label">OI</div>
+            <div class="matrix-badges">
+              <img src="https://img.shields.io/badge/-Luogu-3498DB?style=flat-square&logo=codeforces&logoColor=white" alt="Luogu" />
+              <img src="https://img.shields.io/badge/-LeetCode-F7F7F7?style=flat-square&logo=leetcode&logoColor=black" alt="LeetCode" />
+              <img src="https://img.shields.io/badge/-Codeforces-445f9d?style=flat-square&logo=codeforces&logoColor=white" alt="Codeforces" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack & Experience Section -->
+      <section class="section-card">
+        <h2 class="section-heading">
+          <span class="icon">🛠️</span> Stack & Experience
+        </h2>
+        <div class="projects-grid">
+          <a href="https://github.com/FrankWkd-Plus/Tarot-Game" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">🔮</span>
+              <h3>在线塔罗牌占卜</h3>
+            </div>
+            <p>在线获取关于困扰你问题的塔罗牌占卜，支持 AI 深入深度分析。</p>
+            <span class="demo-link">Demo 🔗</span>
+          </a>
+
+          <a href="https://github.com/FrankWkd-Plus/2026-Tcamp-Mini-Program-Competition" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">⚙️</span>
+              <h3>2026 Tcamp 微信小程序</h3>
+            </div>
+            <p>微信小程序 AI 创新挑战赛参赛作品项目源码。</p>
+          </a>
+
+          <a href="https://ai-work-team-demo.pages.dev/AI_Group_Chat_Pro_Beta%E6%9C%80%E7%BB%88" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">🤖</span>
+              <h3>AI Workstation</h3>
+            </div>
+            <p>将多渠道 AI 进行聚合并协同合作进行高效协同开发。</p>
+          </a>
+
+          <a href="https://blog.frankwkd2026.dpdns.org" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">📜</span>
+              <h3>Personal Blog</h3>
+            </div>
+            <p>基于 Quartz 4 框架精心打造的独立极客个人博客。</p>
+          </a>
+
+          <a href="https://frankwkd2026.dpdns.org" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">📝</span>
+              <h3>Domain Mail System</h3>
+            </div>
+            <p>基于开源项目二次开发的独立域名邮局系统。</p>
+          </a>
+
+          <a href="https://paste.frankwkd2026.dpdns.org" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">✂️</span>
+              <h3>Encrypted Pastebin</h3>
+            </div>
+            <p>支持极简加密的 Markdown 代码剪贴板与长文分享。</p>
+          </a>
+
+          <a href="https://u.frankwkd2026.dpdns.org" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">👉</span>
+              <h3>Url Shorten</h3>
+            </div>
+            <p>高效、轻量级的短链接生成器服务。</p>
+          </a>
+
+          <a href="https://proxy.frankwkd2026.dpdns.org/" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">🛡️</span>
+              <h3>Website Proxy</h3>
+            </div>
+            <p>使用 Cloudflare Workers 实现的高性能网站反向代理。</p>
+          </a>
+
+          <a href="https://gh-agent.frankwkd2026.dpdns.org/" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">📊</span>
+              <h3>Github Download Agent</h3>
+            </div>
+            <p>Github Releases / 源码文件下载 CDN 镜像加速代理。</p>
+          </a>
+
+          <a href="https://sub.frankwkd2026.dpdns.org/" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">🕸️</span>
+              <h3>CF Edge Node Generator</h3>
+            </div>
+            <p>利用 Cloudflare 边缘节点代理流量并智能生成订阅节点。</p>
+          </a>
+
+          <div class="project-card simple">
+            <div class="project-header">
+              <span class="project-icon">💡</span>
+              <h3>Progress Tracker</h3>
+            </div>
+            <p>托管在微信开发者平台的任务追踪进度管理软件。</p>
+          </div>
+
+          <a href="https://status.frankwkd2026.dpdns.org" target="_blank" class="project-card">
+            <div class="project-header">
+              <span class="project-icon">👀</span>
+              <h3>云服务器探针</h3>
+            </div>
+            <p>利用 Beszel 框架搭建的探针&资源监控，结合 Cloudflared Tunnel 进行端口安全转发。</p>
+          </a>
+        </div>
+
+        <!-- Deprecated Projects Box -->
+        <div class="deprecated-box">
+          <h4 class="deprecated-title">⛔ 停止维护项目</h4>
+          <ul class="deprecated-list">
+            <li><strong>CDK Management System</strong> — 基于 Cloudflare Worker 的卡密分发系统。</li>
+            <li><strong>Telegram Gemini Bot</strong> — 基于 Gemini API 自动化响应的 Telegram AI 机器人。</li>
+            <li><strong>Sublink Pro</strong> — 基于开源二次开发的订阅管理&节点分发系统，由 GCP 托管。</li>
+          </ul>
+        </div>
+
+        <!-- Protection Warning Alert -->
+        <div class="protection-alert">
+          <span class="shield-icon">🛡️</span>
+          <span>已经全域部署 <strong>Cloudflare Turnstile</strong> 攻击防护！</span>
+        </div>
+      </section>
+
+      <!-- Find Me Section -->
+      <section class="section-card contact-section">
+        <h2 class="section-heading">
+          <span class="icon">🔎</span> Find Me Here
+        </h2>
+        <p class="contact-intro">保持沟通！欢迎通过以下方式找到我 👀：</p>
+        
+        <div class="contacts-grid">
+          <a href="mailto:master@frankwkd2026.dpdns.org" class="contact-card">
+            <span class="contact-icon">📧</span>
+            <div class="contact-info">
+              <span class="contact-label">Email</span>
+              <span class="contact-val">master@frankwkd2026.dpdns.org</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/FrankWkd-Plus" target="_blank" class="contact-card">
+            <span class="contact-icon">🐙</span>
+            <div class="contact-info">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-val">FrankWkd-Plus</span>
+            </div>
+          </a>
+
+          <a href="https://t.me/frankwkd_pro" target="_blank" class="contact-card">
+            <span class="contact-icon">✈️</span>
+            <div class="contact-info">
+              <span class="contact-label">Telegram</span>
+              <span class="contact-val">@frankwkd_pro</span>
+            </div>
+          </a>
+
+          <a href="https://www.nodeloc.com/u/FlankW/" target="_blank" class="contact-card">
+            <span class="contact-icon">🌐</span>
+            <div class="contact-info">
+              <span class="contact-label">Nodeloc</span>
+              <span class="contact-val">FlankW</span>
+            </div>
+          </a>
+
+          <a href="https://codeforces.com/profile/FrankWkd" target="_blank" class="contact-card">
+            <span class="contact-icon">🏆</span>
+            <div class="contact-info">
+              <span class="contact-label">CodeForces</span>
+              <span class="contact-val">FrankWkd</span>
+            </div>
+          </a>
+
+          <a href="https://www.xiaohongshu.com/user/profile/63c93481000000002702a73f" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-icon">📕</span>
+            <div class="contact-info">
+              <span class="contact-label">小红书</span>
+              <span class="contact-val">mrfrankwkd</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
     </div>
   </main>
 </BaseLayout>
@@ -109,179 +308,405 @@ const base = import.meta.env.BASE_URL;
 <style>
   .about-page {
     min-height: 100vh;
-    padding: calc(var(--nav-height) + 2rem) 2rem 5rem;
+    padding: calc(var(--nav-height) + 1.5rem) 1.5rem 5rem;
+    overflow-y: auto;
   }
 
   .container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
-  }
-
-  .page-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--color-text);
-  }
-
-  .content-grid {
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
 
-  .content-section {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    padding: 2rem;
+  /* Header Styles */
+  .studio-header {
+    text-align: center;
+    padding: 1.5rem 0 0.5rem;
   }
 
-  .content-section h2 {
+  .studio-title {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--color-primary);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #3B82F6 0%, #93C5FD 50%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.35));
+    margin-bottom: 0.5rem;
   }
 
-  .content-section p {
-    line-height: 1.7;
+  .studio-slogan {
+    font-family: 'Fira Code', monospace, sans-serif;
+    font-size: 1.1rem;
     color: var(--color-text-dim);
-    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
   }
 
-  .content-section p:last-of-type {
-    margin-bottom: 0;
-  }
-
-  .what-i-do-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .service-card {
-    padding: 1.25rem;
-    background: rgba(59, 130, 246, 0.05);
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-border);
-    transition: all 0.2s ease;
-  }
-
-  .service-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
-  }
-
-  .service-icon {
-    width: 44px;
-    height: 44px;
+  /* Tip Alert */
+  .tip-alert {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: rgba(59, 130, 246, 0.1);
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-primary);
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
   }
 
-  .service-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  .tip-icon {
+    font-size: 1.5rem;
+  }
+
+  .tip-content {
     color: var(--color-text);
-  }
-
-  .service-card p {
-    font-size: 0.875rem;
-    color: var(--color-text-dim);
-    margin: 0;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
-  .cta-section {
-    text-align: center;
+  /* Section Cards */
+  .section-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease;
   }
 
-  .cta-section p {
+  .section-card:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+  }
+
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* Tags */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
 
-  .contact-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
-    font-size: 1rem;
+  .tag {
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    font-family: var(--font-body);
-    text-decoration: none;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .btn-primary {
-    background: var(--color-primary);
-    color: white;
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
-  }
-
-  .btn-primary:hover {
-    background: #2563EB;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-  }
-
-  .btn-primary svg {
-    transition: transform 0.2s ease;
-  }
-
-  .btn-primary:hover svg {
-    transform: translateX(4px);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--color-text);
     border: 1px solid var(--color-border);
   }
 
-  .btn-secondary:hover {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: var(--color-primary);
+  .tag-purple { background: rgba(168, 85, 247, 0.15); color: #C084FC; border-color: rgba(168, 85, 247, 0.3); }
+  .tag-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border-color: rgba(236, 72, 153, 0.3); }
+  .tag-blue { background: rgba(59, 130, 246, 0.15); color: #60A5FA; border-color: rgba(59, 130, 246, 0.3); }
+  .tag-cyan { background: rgba(6, 182, 212, 0.15); color: #22D3EE; border-color: rgba(6, 182, 212, 0.3); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
   }
 
-  @media (max-width: 768px) {
+  .info-box {
+    padding: 1.25rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+  }
+
+  .info-box h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-box p {
+    color: var(--color-text-dim);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Skills Summary Grid */
+  .skills-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .skill-summary-card {
+    padding: 1.25rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+  }
+
+  .skill-summary-card h4 {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-summary-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-dim);
+    line-height: 1.5;
+  }
+
+  /* Skills Matrix */
+  .skills-matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgba(15, 23, 42, 0.8);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .matrix-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .matrix-label {
+    min-width: 100px;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+  }
+
+  .matrix-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .matrix-badges img {
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+    text-decoration: none;
+    transition: all 0.25 ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-icon {
+    font-size: 1.25rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .project-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-dim);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .demo-link {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .project-card.simple {
+    cursor: default;
+  }
+
+  /* Deprecated Box */
+  .deprecated-box {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px dashed rgba(239, 68, 68, 0.3);
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .deprecated-title {
+    color: #F87171;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .deprecated-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .deprecated-list li {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+  }
+
+  .deprecated-list strong {
+    color: var(--color-text);
+  }
+
+  /* Protection Alert */
+  .protection-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 0.75rem;
+    color: #FACC15;
+    font-size: 0.95rem;
+  }
+
+  /* Contact Section */
+  .contact-intro {
+    color: var(--color-text-dim);
+    margin-bottom: 1.5rem;
+  }
+
+  .contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .contact-card:hover:not(.no-link) {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  .contact-icon {
+    font-size: 1.5rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-label {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+  }
+
+  .contact-val {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    font-weight: 600;
+    word-break: break-all;
+  }
+
+  @media (max-width: 640px) {
     .about-page {
-      padding-top: calc(var(--nav-height) + 1rem);
+      padding: calc(var(--nav-height) + 1rem) 0.875rem 3rem;
     }
 
-    .what-i-do-grid {
-      grid-template-columns: 1fr;
+    .section-card {
+      padding: 1.25rem 1rem;
+      border-radius: 1rem;
     }
 
-    .contact-buttons {
+    .studio-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .studio-slogan {
+      font-size: 0.95rem;
+    }
+
+    .tip-alert {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+
+    .tip-content {
+      font-size: 0.9rem;
+    }
+
+    .matrix-row {
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      gap: 0.5rem;
     }
 
-    .btn {
-      width: 100%;
-      max-width: 280px;
-      justify-content: center;
+    .matrix-label {
+      min-width: auto;
+      font-size: 0.95rem;
+    }
+
+    .matrix-badges {
+      gap: 0.35rem;
+    }
+
+    .matrix-badges img {
+      height: 20px;
+    }
+
+    .contacts-grid,
+    .projects-grid,
+    .skills-summary-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
