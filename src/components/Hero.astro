@@ -74,11 +74,12 @@ const base = import.meta.env.BASE_URL;
 
   .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 12vw, 7rem);
+    font-size: clamp(2rem, 9.5vw, 6.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
-    line-height: 1;
+    line-height: 1.1;
+    word-break: break-word;
   }
 
   .title-text {
@@ -301,18 +302,40 @@ const base = import.meta.env.BASE_URL;
 
   @media (max-width: 768px) {
     .hero {
-      padding-top: calc(var(--nav-height) + 3rem);
+      padding: calc(var(--nav-height) + 1.5rem) 1.25rem 2rem;
+    }
+
+    .greeting {
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero-buttons {
       flex-direction: column;
       align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
     }
 
     .btn {
       width: 100%;
-      max-width: 280px;
+      max-width: 260px;
       justify-content: center;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .tech-stack {
+      gap: 0.5rem;
+    }
+
+    .tech-badge {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.85rem;
     }
   }
 </style>

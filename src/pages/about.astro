@@ -658,10 +658,55 @@ const base = import.meta.env.BASE_URL;
   }
 
   @media (max-width: 640px) {
+    .about-page {
+      padding: calc(var(--nav-height) + 1rem) 0.875rem 3rem;
+    }
+
+    .section-card {
+      padding: 1.25rem 1rem;
+      border-radius: 1rem;
+    }
+
+    .studio-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .studio-slogan {
+      font-size: 0.95rem;
+    }
+
+    .tip-alert {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+
+    .tip-content {
+      font-size: 0.9rem;
+    }
+
     .matrix-row {
       flex-direction: column;
       align-items: flex-start;
       gap: 0.5rem;
+    }
+
+    .matrix-label {
+      min-width: auto;
+      font-size: 0.95rem;
+    }
+
+    .matrix-badges {
+      gap: 0.35rem;
+    }
+
+    .matrix-badges img {
+      height: 20px;
+    }
+
+    .contacts-grid,
+    .projects-grid,
+    .skills-summary-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
