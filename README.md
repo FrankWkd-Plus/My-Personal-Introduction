@@ -15,6 +15,13 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge" alt="License"></a>
 </p>
 
+<p align="center">
+  <a href="https://ai-work-team-demo.pages.dev"><strong>🌐 在线演示 DEMO (Live Demo)</strong></a> ·
+  <a href="#-快速开始"><strong>🚀 快速开始</strong></a> ·
+  <a href="#-详细配置指南-configuration-guide"><strong>📘 配置指南</strong></a> ·
+  <a href="https://github.com/FrankWkd-Plus/My-Personal-Introduction"><strong>⭐️ Star 鼓励</strong></a>
+</p>
+
 ---
 
 - ⚡️ **GPU 驱动的三维粒子背景**：基于 Three.js 动态生成高斯羽化径向渐变贴图，展现真实圆形光晕梦幻星空。
