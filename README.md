@@ -1,11 +1,10 @@
-# 🌌 星系风格个人介绍主页
+<div align="center">
+  <h1>🌌 星系风格个人介绍主页</h1>
+</div>
+
 
 <p align="center">
   <strong>基于 Astro 6 + Three.js 打造的高颜值、沉浸式暗黑星空个人主页 & 作品集</strong>
-</p>
-
-<p align="center">
-  搭载 GPU 加速的 5,000+ 动态交互圆形光晕粒子星空，内置 4 套实验性暗黑调色板与 360° 流水转圈流光按钮。
 </p>
 
 <p align="center">
@@ -16,14 +15,14 @@
 </p>
 
 <p align="center">
-  <a href="https://ai-work-team-demo.pages.dev"><strong>🌐 在线演示 DEMO (Live Demo)</strong></a> ·
-  <a href="#-3-分钟极速部署指南"><strong>🚀 3 分钟部署指南</strong></a> ·
-  <a href="#2️⃣-第二步：替换为自己的内容"><strong>✍️ 修改个人内容</strong></a>
+  <a href="https://ai-work-team-demo.pages.dev"><strong>🔮 DEMO (Live Demo)</strong></a> ·
+  <a href="#快速开始"><strong>🚀 快速开始</strong></a> ·
+  <a href="#网站内容配置"><strong>📔 网站配置</strong></a>
 </p>
 
 ---
 
-## ✨ 亮点特色
+## ✨ 功能
 
 - 🌌 **3D 粒子梦幻星空**：基于 Three.js 动态生成的羽化圆形发光粒子，随鼠标平滑交互。
 - 🧪 **4 套实验性暗黑主题**：顶部右侧 Labs 图标一键切换【幽蓝】、【赛博翡翠】、【极光紫粉】与【宇宙琥珀金】，3D 粒子色彩无缝联动。
@@ -32,11 +31,11 @@
 
 ---
 
-## 🚀 3 分钟极速部署指南
+## 快速开始
 
 只需简单的 3 个步骤，即可拥有属于您自己的星系风格个人主页：
 
-### 1️⃣ 第一步：Fork / 克隆仓库
+### Fork本仓库
 
 点击本仓库右上角的 **Fork** 按钮复制到您自己的 GitHub 账号下，或在本地克隆：
 
@@ -48,9 +47,7 @@ npm install
 
 ---
 
-### 2️⃣ 第二步：替换为自己的内容
-
-您只需要修改以下 **3 个文件** 即可完成个人主页定制：
+### 网站内容配置
 
 #### 🔹 1. 首页文字与按钮 (`src/components/Hero.astro`)
 - 修改 `HELLO, I'M` 与 `Outwardly Verse` 大标题文字。
@@ -67,11 +64,11 @@ npm install
 
 ---
 
-### 3️⃣ 第三步：免费部署到 Cloudflare Pages
+### 部署到 Cloudflare Pages
 
 1. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)，进入 **Workers & Pages** -> **Create application** -> **Pages**。
 2. 选择 **Connect to Git** 并关联您刚才 Fork 的 GitHub 仓库。
-3. 在构建设置中填入以下参数（仅需 3 个配置）：
+3. 在构建设置中填入以下参数：
 
 | 配置项 (Setting) | 填写内容 (Value) |
 | :--- | :--- |
@@ -80,11 +77,11 @@ npm install
 | **Build output directory (输出目录)** | `dist` |
 | **Root directory (根目录)** | 留空（或填 `/`） |
 
-4. 点击 **Save and Deploy**，等待 30 秒构建完成，即可获得全球 CDN 加速的免费个人主页！🎉
+4. 点击 **Save and Deploy**
 
 ---
 
-## 🛠️ 本地开发与指令
+## 🛠️ 进行贡献
 
 ```bash
 # 启动本地开发服务器
