@@ -20,6 +20,13 @@
   <a href="#快速开始"><strong>🚀 快速开始</strong></a> ·
   <a href="#网站内容配置"><strong>📔 网站配置</strong></a>
 </p>
+---
+
+<img width="840" height="505" alt="image" src="https://github.com/user-attachments/assets/fac1d51c-bf8a-4687-877c-9e720e7b561b" />
+<img width="840" height="505" alt="image" src="https://github.com/user-attachments/assets/0dac5235-68c0-4dc8-8ba3-cabe272175e6" />
+
+<img width="840" height="505" alt="image" src="https://github.com/user-attachments/assets/1be6135f-5a74-43a1-bab4-1da366d44158" />
+<img width="840" height="505" alt="image" src="https://github.com/user-attachments/assets/8ee30aa2-1097-4d5a-a9b5-fced15c20423" />
 
 ---
 
